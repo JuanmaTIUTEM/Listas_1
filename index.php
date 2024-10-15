@@ -180,6 +180,26 @@
 		    </div>
 		    <div id="menu2" class="container tab-pane fade w-75"><br>
 		      <h3>Listas JavaScript <hr></h3>
+		      <div class="d-flex justify-content-end">
+
+		      	<div class="input-group w-25">
+		      	    <span class="input-group-text text-center">Item: </span>
+		      	    <input type="number" min="0" max="9999" class="form-control" value="0" name="item">
+		      	  </div>
+		      </div>
+		      <div class="d-flex justify-content-around p-2">
+		      	<div>
+		      		<button class="btn btn-success" name="btnAdd" value="addElement">Agregar elemento</button>
+		      	</div>
+		      	
+		      	<div>
+		      		<button class="btn btn-info" name="btnAdd" value="delElement">Extraer elemento</button>
+		      	</div>
+		      	<div>
+		      		<button class="btn btn-secondary" name="btnAdd" value="pList">Ver lista</button>
+		      	</div>
+		      </div>
+		      <br>
 		    </div>
 		  </div>
 		</div>
