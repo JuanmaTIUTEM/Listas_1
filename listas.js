@@ -1,8 +1,18 @@
+let lista = [10, 25, 3, 78, 5];
+console.log(lista);
+
+function addItem(){
+    var item = document.getElementById('item').value;
+    alert(item);
+    lista.push(item);
+    console.log(lista);
+}
+
 // Función para el Ejercicio 1: Listas de Números Enteros
 function numeros() {
     console.log("Ejercicio 1: Listas de Números Enteros");
     // Crear una lista de números enteros
-    let lista = [10, 25, 3, 78, 5];
+    //let lista = [10, 25, 3, 78, 5];
 
     // Agregar un número al final de la lista
     lista.push(15);
@@ -33,7 +43,7 @@ function numeros() {
 function nombres() {
     console.log("Ejercicio 2: Manipulación de Lista de Nombres");
     // Crear una lista de nombres
-    let lista = ["Juan", "Pedro", "Maria", "Ana"];
+    //let lista = ["Juan", "Pedro", "Maria", "Ana"];
 
     // Agregar un nombre al principio de la lista
     lista.unshift("Luis");

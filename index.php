@@ -31,7 +31,7 @@
 		      <a class="nav-link active" data-bs-toggle="tab" href="#home">Listas</a>
 		    </li>
 		    <li class="nav-item">
-		      <a class="nav-link" data-bs-toggle="tab" href="#menu1">Listas PHP</a>
+		      <a class="nav-link" data-bs-toggle="tab" href="#menu1" disabled>Listas PHP</a>
 		    </li>
 		    <li class="nav-item">
 		      <a class="nav-link" data-bs-toggle="tab" href="#menu2">Listas JavaScript</a>
@@ -144,7 +144,7 @@
 		    	    </div>
 		    	  </div>
 		    	</div>
-		    <div id="menu1" class="container tab-pane fade w-75"><br>
+		    <div id="menu1" class="container tab-pane fade w-75" style="display:none;"><br>
 		      <h3>Litas PHP <hr></h3>
 		      <form method="POST" action="index.php">
 			      <div class="d-flex justify-content-end">
@@ -184,19 +184,19 @@
 
 		      	<div class="input-group w-25">
 		      	    <span class="input-group-text text-center">Item: </span>
-		      	    <input type="number" min="0" max="9999" class="form-control" value="0" name="item">
+		      	    <input type="number" min="0" max="9999" class="form-control" value="0" name="item" id="item">
 		      	  </div>
 		      </div>
 		      <div class="d-flex justify-content-around p-2">
 		      	<div>
-		      		<button class="btn btn-success" name="btnAdd" value="addElement">Agregar elemento</button>
+		      		<button class="btn btn-success" onclick="addItem();" value="addElement">Agregar elemento</button>
 		      	</div>
 		      	
 		      	<div>
-		      		<button class="btn btn-info" name="btnAdd" value="delElement">Extraer elemento</button>
+		      		<button class="btn btn-info"  value="delElement">Extraer elemento</button>
 		      	</div>
 		      	<div>
-		      		<button class="btn btn-secondary" name="btnAdd" value="pList">Ver lista</button>
+		      		<button class="btn btn-secondary"  value="pList">Ver lista</button>
 		      	</div>
 		      </div>
 		      <br>
@@ -210,6 +210,7 @@
 </body>
 	<script src="listas.js"></script>
 	<!-- Latest compiled JavaScript -->
+	<script src="listas.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
