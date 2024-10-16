@@ -68,6 +68,7 @@ function mostrarLista() {
     listaDatosDiv.innerHTML = items;
 }
 
+mostrarLista();
 
 
 
