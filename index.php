@@ -179,27 +179,34 @@
 			  <br>
 		    </div>
 		    <div id="menu2" class="container tab-pane fade w-75"><br>
+		      
 		      <h3>Listas JavaScript <hr></h3>
-		      <div class="d-flex justify-content-end">
+		              <div class="d-flex justify-content-end">
+		                  <div class="input-group w-25">
+		                      <span class="input-group-text text-center">Item: </span>
+		                      <input type="number" min="0" max="9999" class="form-control" value="0" name="item" id="item">
+		                  </div>
+		              </div>
 
-		      	<div class="input-group w-25">
-		      	    <span class="input-group-text text-center">Item: </span>
-		      	    <input type="number" min="0" max="9999" class="form-control" value="0" name="item" id="item">
-		      	  </div>
-		      </div>
-		      <div class="d-flex justify-content-around p-2">
-		      	<div>
-		      		<button class="btn btn-success" onclick="addItem();" value="addElement">Agregar elemento</button>
-		      	</div>
-		      	
-		      	<div>
-		      		<button class="btn btn-info"  value="delElement">Extraer elemento</button>
-		      	</div>
-		      	<div>
-		      		<button class="btn btn-secondary"  value="pList">Ver lista</button>
-		      	</div>
-		      </div>
-		      <br>
+		              <div class="d-flex justify-content-around p-2">
+		                  <div>
+		                      <button class="btn btn-success" onclick="addItem();">Agregar elemento</button>
+		                  </div>
+
+		                  <div>
+		                      <button class="btn btn-info" onclick="delItem();">Extraer elemento</button>
+		                  </div>
+
+		                  <div>
+		                      <button class="btn btn-secondary" onclick="mostrarLista();">Ver lista</button>
+		                  </div>
+		              </div>
+
+		              <br>
+
+		              <div id="listaDatos" class="border border-2 p-3">
+		                  <!-- Aquí se mostrará la lista -->
+		              </div>
 		    </div>
 		  </div>
 		</div>
