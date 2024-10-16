@@ -1,23 +1,24 @@
-<?php 
-    // Crear una lista de números enteros
-    $lista = [10, 25, 3, 78, 5];
+<?php
+session_start();
 
-    /*if($_SERVER['REQUEST_METHOD'] == "POST"){
-        print_r($_POST);
-        $op = $_POST['btnAdd'];
-        $item = $_POST['item'];
-        addItem($lista,$item);
-        //header("Location: index.php");
-    }*/
+// Inicializar la lista si no existe
+if (!isset($_SESSION['lista'])) {
+    $_SESSION['lista'] = [10, 25, 3, 78, 5];
+}
 
-    function printList($lista){
-        foreach ($lista as $item) { 
-            echo '<div class="border text-center">'.$item.'</div>';
-         }
+// Función para agregar un elemento
+if (isset($_POST['addElement'])) {
+    $item = intval($_POST['item']);
+    array_push($_SESSION['lista'], $item);
+}
+
+// Función para eliminar un elemento
+if (isset($_POST['delElement'])) {
+    $item = intval($_POST['item']);
+    $index = array_search($item, $_SESSION['lista']);
+    if ($index !== false) {
+        unset($_SESSION['lista'][$index]);
+        $_SESSION['lista'] = array_values($_SESSION['lista']); // Reindexar la lista
     }
-    function addItem($lista,$item){
-        array_push($lista, $item);
-        print_r($lista);
-    }
-
+}
 ?>

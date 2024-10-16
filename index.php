@@ -1,15 +1,3 @@
-<?php 
-
-	include 'lista.php';
-
-	if($_SERVER['REQUEST_METHOD'] == "POST"){
-	    print_r($_POST);
-	    $op = $_POST['btnAdd'];
-	    $item = $_POST['item'];
-	    addItem($lista,$item);
-	}
-
- ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,11 +15,11 @@
 	<main class="border border-2 container">
 		<div class="container mt-3">
 		  <ul class="nav nav-tabs" role="tablist">
-		    <li class="nav-item">
-		      <a class="nav-link active" data-bs-toggle="tab" href="#home">Listas</a>
+		    <li class="nav-item active">
+		      <a class="nav-link" data-bs-toggle="tab" href="#home">Listas</a>
 		    </li>
-		    <li class="nav-item">
-		      <a class="nav-link" data-bs-toggle="tab" href="#menu1" disabled>Listas PHP</a>
+		    <li class="nav-item "  style="display: none;">
+		      <a class="nav-link" data-bs-toggle="tab" href="#menu1">Listas PHP</a>
 		    </li>
 		    <li class="nav-item">
 		      <a class="nav-link" data-bs-toggle="tab" href="#menu2">Listas JavaScript</a>
@@ -40,7 +28,7 @@
 
 		  <!-- Tab panes -->
 		  <div class="tab-content">
-		    <div id="home" class="container tab-pane active mt-1 p-2 ps-3 w-75"><br>
+		    <div id="home" class="container tab-pane fade mt-1 p-2 ps-3 w-75"><br>
 		    	<div id="accordion">
 		    	    <div class="card">
 		    	      <div class="card-header">
@@ -144,38 +132,44 @@
 		    	    </div>
 		    	  </div>
 		    	</div>
-		    <div id="menu1" class="container tab-pane fade w-75" style="display:none;"><br>
-		      <h3>Litas PHP <hr></h3>
-		      <form method="POST" action="index.php">
-			      <div class="d-flex justify-content-end">
+		    <div id="menu1" class="container tab-pane fade w-75" ><br>
+		      <h3>Listas en PHP <hr></h3>
+		              
+              <!-- Formulario para agregar o eliminar elementos -->
+              <form method="post" action="">
+                  <div class="d-flex justify-content-end">
+                      <div class="input-group w-25">
+                          <span class="input-group-text text-center">Item: </span>
+                          <input type="number" min="0" max="9999" class="form-control" value="0" name="item" id="item">
+                      </div>
+                  </div>
 
-			      	<div class="input-group w-25">
-			      	    <span class="input-group-text text-center">Item: </span>
-			      	    <input type="number" min="0" max="9999" class="form-control" value="0" name="item">
-			      	  </div>
-			      </div>
-			      <div class="d-flex justify-content-around p-2">
-			      	<div>
-			      		<button class="btn btn-success" name="btnAdd" value="addElement">Agregar elemento al final</button>
-			      	</div>
-			      	
-			      	<div>
-			      		<button class="btn btn-info" name="btnAdd" value="delElement">Extraer elemento</button>
-			      	</div>
-			      	<div>
-			      		<button class="btn btn-secondary" name="btnAdd" value="pList">Ver lista</button>
-			      	</div>
-			      </div>
-			      <br>
-			      <div class="d-flex justify-content-center">
-				      <div class="border border-2 d-flex flex-column w-25">
-				      	<?php 
-				      		printList($lista);
-				      	?>
-				      	
-				      </div>
-				  </div>
-				</form>
+                  <div class="d-flex justify-content-around p-2 mt-3">
+                      <div>
+                          <button class="btn btn-success" name="addElement">Agregar elemento</button>
+                      </div>
+
+                      <div>
+                          <button class="btn btn-info" name="delElement">Extraer elemento</button>
+                      </div>
+
+                      <div>
+                          <button class="btn btn-secondary" name="showList">Ver lista</button>
+                      </div>
+                  </div>
+              </form>
+
+              <!-- Mostrar la lista -->
+              <br>
+              <div id="listaDatos" class="border border-2 p-3">
+                  <?php
+                  if (isset($_SESSION['lista'])) {
+                      foreach ($_SESSION['lista'] as $item) {
+                          echo "<div>$item</div>";
+                      }
+                  }
+                  ?>
+              </div>
 			  <br>
 		    </div>
 		    <div id="menu2" class="container tab-pane fade w-75"><br>
@@ -208,7 +202,6 @@
         <p>&copy; Estructura de datos Aplicadas: Unidad 3. Listas</p>
     </footer>
 </body>
-	<script src="listas.js"></script>
 	<!-- Latest compiled JavaScript -->
 	<script src="listas.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
