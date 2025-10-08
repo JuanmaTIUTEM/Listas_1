@@ -1,71 +1,37 @@
 let lista = [10, 25, 3, 78, 5];
 console.log(lista);
 
-// Función para agregar un elemento a la lista
 function addItem() {
-    // Obtener el valor del input
-    var item = document.getElementById('item').value;
+    let item = document.getElementById('itemJS').value;
 
-    if (item === "") {
+    if (item === "" || item == 0) {
         alert("Por favor ingresa un número.");
         return;
     }
 
-    // Agregar el valor convertido a número entero a la lista
     lista.push(parseInt(item));
-
-    // Mostrar la lista actualizada en la consola
-    console.log(lista);
-
-    // Actualizar y mostrar la lista en el HTML
     mostrarLista();
 }
 
-// Función para eliminar un elemento de la lista
 function delItem() {
-    // Obtener el valor del input
-    var item = document.getElementById('item').value;
-
-    if (item === "") {
-        alert("Por favor ingresa un número.");
-        return;
-    }
-
-    // Buscar el índice del valor en la lista
+    let item = document.getElementById('itemJS').value;
     let index = lista.indexOf(parseInt(item));
     if (index !== -1) {
-        // Eliminar el elemento de la lista
         lista.splice(index, 1);
         alert("Elemento eliminado: " + item);
     } else {
         alert("Elemento no encontrado en la lista.");
     }
-
-    // Mostrar la lista actualizada en la consola
-    console.log(lista);
-
-    // Actualizar y mostrar la lista en el HTML
     mostrarLista();
 }
 
-// Función para mostrar la lista en el HTML
 function mostrarLista() {
-    // Seleccionar el div donde se mostrará la lista
-    let listaDatosDiv = document.getElementById('listaDatos');
-
-    // Limpiar el contenido del div
+    let listaDatosDiv = document.getElementById('listaDatosJS');
     listaDatosDiv.innerHTML = "";
 
-    // Crear una cadena para mostrar los elementos de la lista
-    let items = "";
-
-    // Recorrer cada elemento de la lista y agregarlo a la cadena
-    for (var i of lista) {
-        items += i + "<br>";
+    for (let i of lista) {
+        listaDatosDiv.innerHTML += i + "<br>";
     }
-
-    // Mostrar la lista en el div
-    listaDatosDiv.innerHTML = items;
 }
 
 mostrarLista();

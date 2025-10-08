@@ -8,13 +8,13 @@ if (!isset($_SESSION['lista'])) {
 
 // Función para agregar un elemento
 if (isset($_POST['addElement'])) {
-    $item = intval($_POST['item']);
+    $item = intval($_POST['itemPHP']);
     array_push($_SESSION['lista'], $item);
 }
 
 // Función para eliminar un elemento
 if (isset($_POST['delElement'])) {
-    $item = intval($_POST['item']);
+    $item = intval($_POST['itemPHP']);
     $index = array_search($item, $_SESSION['lista']);
     if ($index !== false) {
         unset($_SESSION['lista'][$index]);

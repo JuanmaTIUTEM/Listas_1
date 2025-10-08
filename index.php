@@ -1,9 +1,13 @@
+<?php 
+	require 'lista.php';
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Listas JS y PHP</title>
+	<title>Tema: Listas JS y PHP</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,7 +22,7 @@
 		    <li class="nav-item active">
 		      <a class="nav-link" data-bs-toggle="tab" href="#home">Listas</a>
 		    </li>
-		    <li class="nav-item "  style="display: none;">
+		    <li class="nav-item "  >
 		      <a class="nav-link" data-bs-toggle="tab" href="#menu1">Listas PHP</a>
 		    </li>
 		    <li class="nav-item">
@@ -104,6 +108,39 @@
 		    	    </div>
 		    	    <div class="card">
 		    	      <div class="card-header">
+		    	        <a class="collapsed btn" data-bs-toggle="collapse" href="#ejemplophp">
+		    	          <h2>Ejemplo en PHP</h2>
+		    	        </a>
+		    	      </div>
+		    	      <div id="ejemplophp" class="collapse" data-bs-parent="#accordion">
+		    	        <div class="card-body">
+                            <code id="ejemploCodigo">
+
+													// Declaración de una lista de números
+													$numeros = [10, 20, 30, 40];
+
+													// Agregar un nuevo número
+													array_push($numeros, 50);
+
+													// Eliminar el número 20
+													$index = array_search(20, $numeros);
+													if ($index !== false) {
+													    unset($numeros[$index]); // elimina el valor en esa posición
+													    $numeros = array_values($numeros); // reindexa los índices (0, 1, 2, ...)
+													}
+
+													// Recorrer la lista e imprimir cada número
+													foreach ($numeros as $num) {
+													    echo $num . 'salto_linea';
+													}
+
+
+	              		    </code>
+		    	        </div>
+		    	      </div>
+		    	    </div>
+		    	    <div class="card">
+		    	      <div class="card-header">
 		    	        <a class="collapsed btn" data-bs-toggle="collapse" href="#ventajas">
 		    	          <h2>Ventajas de Usar Listas</h2>
 		    	        </a>
@@ -138,9 +175,9 @@
               <!-- Formulario para agregar o eliminar elementos -->
               <form method="post" action="">
                   <div class="d-flex justify-content-end">
-                      <div class="input-group w-25">
+                      <div class="input-group w-50">
                           <span class="input-group-text text-center">Item: </span>
-                          <input type="number" min="0" max="9999" class="form-control" value="0" name="item" id="item">
+                          <input type="number" min="0" max="9999" class="form-control" value="0" name="itemPHP" id="itemPHP">
                       </div>
                   </div>
 
@@ -161,7 +198,7 @@
 
               <!-- Mostrar la lista -->
               <br>
-              <div id="listaDatos" class="border border-2 p-3">
+              <div id="listaDatosPHP" class="border border-2 p-3">
                   <?php
                   if (isset($_SESSION['lista'])) {
                       foreach ($_SESSION['lista'] as $item) {
@@ -171,14 +208,33 @@
                   ?>
               </div>
 			  <br>
+
+			  <div id="accordion" class="justify-content-center">
+
+		      <div class="card">
+		        <div class="card-header">
+		          <a class="btn btn-secondary text-center" data-bs-toggle="collapse" href="#ejercicios">
+		            Ver Ejercicios
+		          </a>
+		        </div>
+		        <div id="ejercicios" class="collapse" data-bs-parent="#accordion">
+		          <div class="card-body">
+                  <iframe src="listasphp.php" width="100%" height="500px" frameborder="0" id="iframeEjercicios"></iframe>
+		          </div>
+		        </div>
+		      </div>
 		    </div>
+			  
+		    </div>
+		    
+
 		    <div id="menu2" class="container tab-pane fade w-75"><br>
 		      
 		      <h3>Listas JavaScript <hr></h3>
 		              <div class="d-flex justify-content-end">
 		                  <div class="input-group w-25">
 		                      <span class="input-group-text text-center">Item: </span>
-		                      <input type="number" min="0" max="9999" class="form-control" value="0" name="item" id="item">
+		                      <input type="number" min="0" max="9999" class="form-control" value="0" name="itemJS" id="itemJS">
 		                  </div>
 		              </div>
 
@@ -198,15 +254,15 @@
 
 		              <br>
 
-		              <div id="listaDatos" class="border border-2 p-3">
-		                  <!-- Aquí se mostrará la lista -->
+		              <div id="listaDatosJS" class="border border-2 p-3">
+		                  <h1>Aquí se mostrará la lista</h1>
 		              </div>
 		    </div>
 		  </div>
 		</div>
 	</main>
 	<footer class="text-center">
-        <p>&copy; Estructura de datos Aplicadas: Unidad 3. Listas</p>
+        <p>&copy; Estructura de datos Aplicadas: Unidad 2. Estructuras de Datos Básicas</p>
     </footer>
 </body>
 	<!-- Latest compiled JavaScript -->
@@ -214,4 +270,25 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+    // Guardar la pestaña activa antes de recargar
+    document.querySelectorAll('a[data-bs-toggle="tab"]').forEach(tab => {
+        tab.addEventListener('shown.bs.tab', function (e) {
+            localStorage.setItem('activeTab', e.target.getAttribute('href'));
+        });
+    });
+
+    // Restaurar la pestaña activa después de recargar
+    window.addEventListener('load', function () {
+        var activeTab = localStorage.getItem('activeTab');
+        if (activeTab) {
+            var tabTrigger = document.querySelector(`a[href="${activeTab}"]`);
+            var tab = new bootstrap.Tab(tabTrigger);
+            tab.show();
+        }
+    });
+</script>
+
+
+
 </html>
